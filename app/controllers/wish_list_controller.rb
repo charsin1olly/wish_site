@@ -1,27 +1,25 @@
 class WishListController < ApplicationController
-  def new_wish
-  end
-
   def card
+    @wish_lists = WishList.all
+  end
+ 
+  def new_wish
+    @wish_list = WishList.new
   end
 
-  def catch_wish
-    # render html:params
-    # list =params[:wish_list]
-    # title = params[:title]
-    # content = params[:content]
-
-    clean_params = params.require(:wish).permit( :title , :description)
-    wish = WishList.new(clean_params)
+  def create_wish
+    clean_params = params.require(:wish_list).permit( :title , :description)
+    @wish_list = WishList.new(clean_params)
     
-    # render html: clean_params
 
-    if wish.save
-      render html: "ok"
+    if @wish_list.save
+      redirect_to make_a_wish_path , notice: "許願成功～～"
     else
-      render html: "ng"
+      render :new_wish
     end
-
   end
 
+  def show_wish
+    render html: params
+  end
 end

@@ -1,12 +1,11 @@
-<h1>許願卡</h1>
 
-<form action="/catch_wish" method="post">
-  <input type="hidden" name="authenticity_token" />
-  <input type="text" name="wish[title]" />
-  <textarea name="wish[description]"></textarea>
-  <!-- <input type="text" name="wish" /> -->
-  <button>送出</button>
-</form>
 
-<!-- 有name的東西都會被送到網址的query string去 -->
-<!-- authenticity_token  欄位要在該頁面重整才會出現文字 -->
+<h1>許願卡 清單</h1>
+
+<%= link_to '新增許願卡' ,  new_wish_path %>
+
+<% @wish_lists.each do |wish_list|%>
+
+<li><%= link_to wish_list.title, wish_card_info_path(wish_list.id) %></li>
+
+<% end %>
