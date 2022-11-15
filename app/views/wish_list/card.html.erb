@@ -1,2 +1,12 @@
 <h1>許願卡</h1>
 
+<form action="/catch_wish" method="post">
+  <input type="hidden" name="authenticity_token" />
+  <input type="text" name="wish[title]" />
+  <textarea name="wish[description]"></textarea>
+  <!-- <input type="text" name="wish" /> -->
+  <button>送出</button>
+</form>
+
+<!-- 有name的東西都會被送到網址的query string去 -->
+<!-- authenticity_token  欄位要在該頁面重整才會出現文字 -->
