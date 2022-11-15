@@ -1,2 +1,3 @@
 class WishList < ApplicationRecord
+  
 end
