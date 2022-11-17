@@ -24,15 +24,23 @@ class WishListController < ApplicationController
 
   def show_wish
     @wish_list = WishList.find(params[:id])
-    
+
   end
 
-  def edit
+  def edit_wish
     @wish_list = WishList.find(params[:id])
   end
 
-  def update
-    render html: params
+  def update_wish
+    @wish_list = WishList.find(params[:id])
+    clean_params = params.require(:wish_list).permit( :title , :description)
+    
+
+    if @wish_list.update(clean_params)
+      redirect_to root_path , notice: "修改成功～～"
+    else
+      render :edit_wish
+    end
   end
 
 

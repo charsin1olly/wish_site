@@ -7,7 +7,7 @@
 <% @wish_lists.each do |wish_list|%>
 
 <li>
-<%= link_to "編輯","edit_wish_card_info_path" %>
+<%= link_to "編輯", edit_wish_card_info_path(wish_list) %>
 <%= link_to "刪除", "###"%>
 <%= link_to wish_list.title, wish_card_info_path(wish_list) %>
 </li>
