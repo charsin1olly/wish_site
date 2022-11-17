@@ -23,14 +23,17 @@ class WishListController < ApplicationController
   end
 
   def show_wish
+    @wish_list = WishList.find(params[:id])
     
-    @wish_list = WishList.find(id: params[:id])
-    render html: @wish_list.title
-
   end
 
-private
+  def edit
+    @wish_list = WishList.find(params[:id])
+  end
 
+  def update
+    render html: params
+  end
 
 
 end

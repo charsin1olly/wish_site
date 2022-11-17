@@ -2,11 +2,13 @@
 
 <h1>許願卡 清單</h1>
 
-<%= link_to '新增許願卡' ,  new_wish_path %>
+<%= link_to '新增許願卡' ,  new_wish_path %></br>
 
 <% @wish_lists.each do |wish_list|%>
 
 <li>
+<%= link_to "編輯","edit_wish_card_info_path" %>
+<%= link_to "刪除", "###"%>
 <%= link_to wish_list.title, wish_card_info_path(wish_list) %>
 </li>
 

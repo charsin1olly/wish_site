@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   get "/new_wish" , to: "wish_list#new_wish"
   post "/catch_wish", to: "wish_list#create_wish"
   get "/wish_card_info/:id", to: "wish_list#show_wish", as: "wish_card_info"
-  
+  get "/wish_card_info/:id/edit", to: "wish_list#edit", as: "edit_wish_card_info"
+  post "/update_catch_wish/:id", to: "wish_list#update", as: "update_wish_card_info"
+
+
   root"wish_list#card"
 end
