@@ -1,6 +1,6 @@
 class WishListsController < ApplicationController
   
-before_action :find_wish_list, only:[ :show ,:edit ,:update ,:destroy]
+before_action :find_wish_list, only:[:show ,:edit ,:update ,:destroy]
   
   def index
     @wish_lists = WishList.all
@@ -22,9 +22,11 @@ before_action :find_wish_list, only:[ :show ,:edit ,:update ,:destroy]
   end
 
   def show
+    
   end
 
   def edit
+    
   end
 
   def update
