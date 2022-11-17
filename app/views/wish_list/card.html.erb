@@ -6,6 +6,8 @@
 
 <% @wish_lists.each do |wish_list|%>
 
-<li><%= link_to wish_list.title, wish_card_info_path(wish_list.id) %></li>
+<li>
+<%= link_to wish_list.title, wish_card_info_path(wish_list) %>
+</li>
 
 <% end %>
