@@ -1,6 +1,6 @@
 class WishListController < ApplicationController
   
-rescue_from ActiveRecord::RecordNotFound, with: :not_found
+
   
   def card
     @wish_lists = WishList.all
@@ -31,9 +31,6 @@ rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
 private
 
-def not_found
-  # render html: "找不到"
-  render profile: 404.html , status: 404
-end
+
 
 end
