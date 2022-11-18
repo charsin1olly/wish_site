@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     session[:user] = nil
     redirect_to root_path , notice: "已登出"
   end
