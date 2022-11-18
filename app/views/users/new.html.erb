@@ -1,0 +1,24 @@
+<h1> 註冊 </h1>
+
+
+<%= form_with model: @user do |f| %>
+  <div>
+    <%= f.label :nickname %>
+    <%= f.text_field :nickname %>
+  </div>
+
+  <div>
+  <%= f.label :email %>
+  <%= f.text_area :email %>
+  </div>
+
+  <div>
+    <%= f.label :password %>
+    <%= f.text_field :password %>
+    <%= text_field :password, :password_confirmation %>
+  </div>
+
+
+  <%= f.submit %>
+
+<% end %>

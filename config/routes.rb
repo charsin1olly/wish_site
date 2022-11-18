@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "/contact", to: "pages#contact"
 
   resources :wish_lists
+  resource :user, as: "users"
 
   # get "/make_a_wish", to: "wish_list#card"
   # get "/new_wish" , to: "wish_list#new"
