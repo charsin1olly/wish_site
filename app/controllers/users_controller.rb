@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(clean_user_params)
-    
+
     if @user.save
       redirect_to root_path , notice: "註冊成功"
     else
@@ -13,6 +13,9 @@ class UsersController < ApplicationController
     end
   end
 
+  def longin
+  end
+  
 
 
 

@@ -4,7 +4,12 @@ Rails.application.routes.draw do
   get "/contact", to: "pages#contact"
 
   resources :wish_lists
-  resource :user, as: "users"
+
+  resource :user, as: "users" do
+    collection do
+      get :login
+    end
+  end
 
   # get "/make_a_wish", to: "wish_list#card"
   # get "/new_wish" , to: "wish_list#new"
