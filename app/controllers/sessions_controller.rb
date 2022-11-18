@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   def create
     email = params[:email]
     password = params[:password]
-    # user = User.login(email, password)
+    user = User.login(email, password)
 
     if user
       session[:user] = user.id

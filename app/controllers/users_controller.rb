@@ -4,23 +4,26 @@ class UsersController < ApplicationController
   end
 
   def create
-    email = params[:email]
-    password = params[:password]
-
-    user = User.login(email, password)
-
-    if user
+    # email = params[:email]
+    # password = params[:password]
+    # user = User.login(email, password)
+    @user = User.new(clean_user_params)
+    if user.save
       session[:user] = user.id
-      redirect_to root_path, notice: "登入成功"
+      redirect_to root_path, notice: "註冊成功"
     else
-      redirect_to login_users_path, alert: "登入失敗"
+      # redirect_to login_users_path, alert: "登入失敗"
+      render :new
     end
   end
 
-  def self.login(email, password)
-    hashed_password = Digest::SHA1.hexdigest("keke#{password.reverse}haha")
+  # def self.login(email, password)
+  #   hashed_password = Digest::SHA1.hexdigest("keke#{password.reverse}haha")
 
-    find_by(email: email , password: hashed_password)
+  #   find_by(email: email , password: hashed_password)
+  # end
+
+  def login
   end
 
 
