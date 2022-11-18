@@ -4,7 +4,7 @@ before_action :find_wish_list, only:[:show ,:edit ,:update ,:destroy]
 
   
   def index
-    @wish_lists = WishList.all
+    @wish_lists = current_user.wish_lists
   end
  
   def new
@@ -14,8 +14,11 @@ before_action :find_wish_list, only:[:show ,:edit ,:update ,:destroy]
   end
 
   def create
-    @wish_list = WishList.new(clean_wish_list)
+    # @wish_list = WishList.new(clean_wish_list)
+    # @wish_list.user_id = current_user
     
+    @wish_list = current_user.wish_lists.new(clean_wish_list)
+
     if @wish_list.save
       redirect_to root_path , notice: "許願成功～～"
     else
@@ -46,7 +49,7 @@ before_action :find_wish_list, only:[:show ,:edit ,:update ,:destroy]
 
 private
   def find_wish_list
-    @wish_list = WishList.find(params[:id])
+    @wish_list = current_user.wish_lists.find(params[:id])
   end
 
   def clean_wish_list
