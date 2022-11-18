@@ -3,6 +3,6 @@ class WishList < ApplicationRecord
   validates :description , presence: true
 
   #relationship
-  belongs_to :users
+  belongs_to :user
 end
  

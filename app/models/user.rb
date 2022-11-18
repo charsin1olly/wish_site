@@ -10,6 +10,10 @@ class User < ApplicationRecord
   #relationship
   has_many :wish_lists
 
+  # callbacks
+  before_create :encrypt_password
+
+  # class methods
   def self.login(email, password)
     hashed_password = Digest::SHA1.hexdigest("keke#{password.reverse}haha")
     find_by(email: email , password: hashed_password)
