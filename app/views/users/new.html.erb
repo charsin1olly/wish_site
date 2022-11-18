@@ -9,15 +9,18 @@
 
   <div>
   <%= f.label :email %>
-  <%= f.text_area :email %>
+  <%= f.email_field :email %>
   </div>
 
   <div>
     <%= f.label :password %>
-    <%= f.text_field :password %>
-    <%= text_field :password, :password_confirmation %>
+    <%= f.password_field :password %>
   </div>
 
+  <div>
+    <%= f.label :確認密碼 %>
+    <%= f.password_field :password_confirmation %>
+  </div>
 
   <%= f.submit %>
 

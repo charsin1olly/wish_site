@@ -8,6 +8,6 @@ class User < ApplicationRecord
 
   private 
   def encrypt_password
-  self.password = Digest::SHA1.hexdigest(password)
+  self.password = Digest::SHA1.hexdigest(self.password)
   end
 end
