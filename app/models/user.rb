@@ -4,10 +4,10 @@ class User < ApplicationRecord
              confirmation: true,
              length: { minimum: 6 }
 
-  before_save :encrypt_password
+  before_create :encrypt_password
 
   private 
-  def :encrypt_password
-  self.password = 
+  def encrypt_password
+  self.password = Digest::SHA1.hexdigest(password)
   end
 end
