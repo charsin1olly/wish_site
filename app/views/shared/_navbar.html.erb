@@ -1,5 +1,7 @@
 <% if user_sign_in? %>
 <nav>
+  <%= current_user.email %>
+  <%= link_to "我的許願卡" , wish_lists_path %>
   <%= link_to "登出", session_path, method: "delete" %>
   <%= current_user.email %>
   </nav>
