@@ -13,9 +13,9 @@ class UsersController < ApplicationController
     end
   end
 
-  def longin
+  def login
   end
-  
+
 
 
 
