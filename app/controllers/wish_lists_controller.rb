@@ -1,6 +1,7 @@
 class WishListsController < ApplicationController
-  
+before_action :authenticate_user! 
 before_action :find_wish_list, only:[:show ,:edit ,:update ,:destroy]
+
   
   def index
     @wish_lists = WishList.all
@@ -8,12 +9,13 @@ before_action :find_wish_list, only:[:show ,:edit ,:update ,:destroy]
  
   def new
     @wish_list = WishList.new
+
+   
   end
 
   def create
     @wish_list = WishList.new(clean_wish_list)
     
-
     if @wish_list.save
       redirect_to root_path , notice: "許願成功～～"
     else
@@ -50,5 +52,7 @@ private
   def clean_wish_list
     params.require(:wish_list).permit( :title , :description)
   end
+
+ 
 
 end

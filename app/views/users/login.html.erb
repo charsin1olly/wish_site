@@ -1,7 +1,7 @@
 <h1>登入畫面</h1>
 
 
-<%= form_with model: @user do |f| %>
+<%= form_with(url: session_path )do |f| %>
   <div>
   <%= f.label :email %>
   <%= f.email_field :email %>

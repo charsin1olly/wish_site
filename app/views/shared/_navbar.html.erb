@@ -1,5 +1,11 @@
+<% if user_sign_in? %>
+<nav>
+  <%= link_to "登出", session_path, method: "delete" %>
+  <%= current_user.email %>
+  </nav>
+<% else %>
 <nav>
   <%= link_to "註冊", new_users_path %>
   <%= link_to "登入", login_users_path %>
-  <%= link_to "登出", '#' %>
 </nav>
+<% end %>
