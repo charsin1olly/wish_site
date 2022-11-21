@@ -1,9 +1,8 @@
 <% if flash.any? %>
-    <div style="color: blue;">
-      <%= flash[:notice] %><br>
+    <div style="color: white ; background-color:blue">
+      <%= notice %>
     </div>
-    
-    <div style="color: rgb(235, 9, 39);">
-    <%= flash[:alert] %><br>
+    <div style="color: white ; background-color: red">
+     <%= alert %>
     </div>
   <% end %>

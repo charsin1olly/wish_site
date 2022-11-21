@@ -20,20 +20,20 @@
     <%= form_with(model: @comment, url: wish_list_comments_path(@wish_list)	 ) do |f| %>
 
       <div>
-      留言
-      <%= f.label :content %>
-      <%= f.text_area :content %>
+        留言
+        <%= f.label :content %>
+        <%= f.text_area :content %>
       </div>
 
-    <%= f.submit %>
+      <%= f.submit %>
 
-    <% @comments.each do |comment|%>
+      <% @comments.each do |comment|%>
 
-      <li>
-      <%= @comment.content %>
-      </li>
+          <li>
+          <%= @comment.content %>
+          </li>
 
-    <% end %>
+      <% end %>
 
    <% end %>
     

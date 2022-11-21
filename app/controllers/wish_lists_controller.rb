@@ -12,8 +12,6 @@ before_action :find_wish_list, only:[:show ,:edit ,:update ,:destroy]
  
   def new
     @wish_list = WishList.new
-
-   
   end
 
   def create
@@ -31,8 +29,8 @@ before_action :find_wish_list, only:[:show ,:edit ,:update ,:destroy]
 
   def show
     @comment=Comment.new
-    #把id 做反向排序
-    @comments=@wish_list.comment.order(id: :desc)
+    #把id 做反向(id 升序 ASC；降序 DESC)排序(order)
+    @comments=@wish_list.comments.order(id: :desc)
   end
 
   def edit

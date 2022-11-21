@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :wish_lists do
     #新增時需要wishlist的ID
-    #寄生在wish_list 不用index 不用show/不要編輯功能
+    #寄生在wish_list 不用index 不用show/不要編輯功能  shallow: true打開就有這種功能
     resources :comments , shallow: true ,only: [:create , :destroy]
     # resources :comments ,only: [:new, :create ,:index]
   end

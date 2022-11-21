@@ -3,12 +3,12 @@ class WishList < ApplicationRecord
   validates :description , presence: true
 
   #scope
-  # scopes :not_deleted , ->{where(delete_time: nil)}
+  # scopes :not_deleted , ->{where(deleted_at: nil)}
   # default_scopes {where(delete_time: nil)}
 
   #relationship
   belongs_to :user
-  has_many :comment
+  has_many :comments
 
   acts_as_paranoid
   # def destroy
