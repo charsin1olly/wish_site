@@ -24,4 +24,5 @@ class ApplicationController < ActionController::Base
     redirect_to login_users_path ,alert:"請先登入帳號"
     end
   end
+  
 end

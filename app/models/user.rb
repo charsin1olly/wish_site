@@ -10,6 +10,7 @@ class User < ApplicationRecord
   #relationship
   has_many :wish_lists
 
+
   # callbacks
   before_create :encrypt_password
 

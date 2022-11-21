@@ -3,7 +3,16 @@ Rails.application.routes.draw do
   get "/about", to: "pages#about"
   get "/contact", to: "pages#contact"
 
-  resources :wish_lists
+  resources :wish_lists do
+    #新增時需要wishlist的ID
+    #寄生在wish_list 不用index 不用show/不要編輯功能
+    resources :comments , shallow: true ,only: [:create , :destroy]
+    # resources :comments ,only: [:new, :create ,:index]
+  end
+
+  #新增時不需wishlist的ID
+  # resources :comments ,only: [:show, :edit ,destroy]
+
 
   resource :user, as: "users" do
     collection do

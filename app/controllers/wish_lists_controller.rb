@@ -27,7 +27,9 @@ before_action :find_wish_list, only:[:show ,:edit ,:update ,:destroy]
   end
 
   def show
-    
+    @comment=comment.new
+    #把id 做反向排序
+    @comments=@wish_list.comment.order(id: :desc)
   end
 
   def edit
@@ -50,7 +52,7 @@ before_action :find_wish_list, only:[:show ,:edit ,:update ,:destroy]
 private
   def find_wish_list
     @wish_list = current_user.wish_lists.find(params[:id])
-    @wish_list = current_user.wish_lists.find_by!(id: params[:id] , delete_time: nil)
+    # @wish_list = current_user.wish_lists.find_by!(id: params[:id] , delete_time: nil)
   end
 
   def clean_wish_list

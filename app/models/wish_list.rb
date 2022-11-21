@@ -8,6 +8,7 @@ class WishList < ApplicationRecord
 
   #relationship
   belongs_to :user
+  has_many :comment
 
   acts_as_paranoid
   # def destroy

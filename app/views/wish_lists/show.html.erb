@@ -8,7 +8,7 @@
   <title>Document</title>
 </head>
 <body>
-  <h1>這裡是卡片裡面</h>
+  <h1>這裡是卡片裡面</h1>
    
     <section>
       <%= @wish_list.title %>
@@ -17,6 +17,25 @@
     <%= simple_format(@wish_list.description) %>
    </section>
    
+    <%= form_with(model: @comment, url: wish_list_comments_path(@wish_list)	 ) do |f| %>
+
+      <div>
+      留言
+      <%= f.label :content %>
+      <%= f.text_area :content %>
+      </div>
+
+    <%= f.submit %>
+
+    <% @comments.each do |comment|%>
+
+      <li>
+      <%= @comment.content %>
+      </li>
+
+    <% end %>
+
+   <% end %>
     
 </body>
 </html>
