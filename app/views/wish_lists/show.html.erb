@@ -20,21 +20,24 @@
     <%= form_with(model: @comment, url: wish_list_comments_path(@wish_list)	 ) do |f| %>
 
       <div>
-        留言
-        <%= f.label :content %>
+        <div>留言</div>
         <%= f.text_area :content %>
       </div>
 
-      <%= f.submit %>
+      <%= f.submit "留言" %>
 
-      <% @comments.each do |comment|%>
+     
+      <ul>
+        <% @comments.each do |comment|%>
 
-          <li>
-          <%= @comment.content %>
-          </li>
+            <li>
+            <%= comment.content %>
+            <%= link_to "刪除" , comment_path(comment.id),method:"delete" %>
+            </li>
 
-      <% end %>
-
+        <% end %>
+      </ul>
+      
    <% end %>
     
 </body>
