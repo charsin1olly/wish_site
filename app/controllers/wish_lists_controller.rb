@@ -4,7 +4,10 @@ before_action :find_wish_list, only:[:show ,:edit ,:update ,:destroy]
 
   
   def index
-    @wish_lists = current_user.wish_lists
+    # @wish_lists = current_user.wish_lists
+    #過濾有寫刪除時間的
+    @wish_lists = current_user.wish_lists.where(deleted_at: nil)
+
   end
  
   def new
@@ -27,7 +30,7 @@ before_action :find_wish_list, only:[:show ,:edit ,:update ,:destroy]
   end
 
   def show
-    @comment=comment.new
+    @comment=Comment.new
     #把id 做反向排序
     @comments=@wish_list.comment.order(id: :desc)
   end
@@ -46,6 +49,8 @@ before_action :find_wish_list, only:[:show ,:edit ,:update ,:destroy]
 
   def destroy
     # @wish_list.destroy
+    @wish_list.update(deleted_at: Time.current)
+
     redirect_to root_path ,notice:"刪除成功"
   end
 
