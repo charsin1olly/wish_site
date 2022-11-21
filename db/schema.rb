@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_21_043251) do
+ActiveRecord::Schema.define(version: 2022_11_21_155940) do
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
@@ -39,9 +39,7 @@ ActiveRecord::Schema.define(version: 2022_11_21_043251) do
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "online", default: false
     t.integer "user_id"
-    t.datetime "delete_time"
     t.datetime "deleted_at"
-    t.index ["delete_time"], name: "index_wish_lists_on_delete_time"
     t.index ["deleted_at"], name: "index_wish_lists_on_deleted_at"
     t.index ["user_id"], name: "index_wish_lists_on_user_id"
   end
