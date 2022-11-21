@@ -4,7 +4,7 @@ before_action :find_wish_list, only:[:show ,:edit ,:update ,:destroy]
 
   
   def index
-    @wish_lists = current_user.wish_lists.where(delete_time: nil)
+    @wish_lists = current_user.wish_lists
   end
  
   def new
@@ -43,13 +43,14 @@ before_action :find_wish_list, only:[:show ,:edit ,:update ,:destroy]
   end
 
   def destroy
-    @wish_list.update(delete_time: Time.now)
+    # @wish_list.destroy
     redirect_to root_path ,notice:"刪除成功"
   end
 
 private
   def find_wish_list
-    @wish_list = current_user.wish_lists.find_by(id: params[:id] , delete_time: nil)
+    @wish_list = current_user.wish_lists.find(params[:id])
+    @wish_list = current_user.wish_lists.find_by!(id: params[:id] , delete_time: nil)
   end
 
   def clean_wish_list
