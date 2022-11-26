@@ -17,7 +17,7 @@
     <%= simple_format(@wish_list.description) %>
    </section>
    
-    <%= form_with(model: @comment, url: wish_list_comments_path(@wish_list)	 ) do |f| %>
+    <%= form_with(model: @comment, url: wish_list_comments_path(@wish_list)) do |f| %>
 
       <div>
         <div>留言</div>
@@ -25,20 +25,23 @@
       </div>
 
       <%= f.submit "留言" %>
-
+    <% end %>
      
+      <%# <ul> %>
+        <%# <% @comments.each do |comment| %> 
+          <%# 不建議在回圈裡寫render，rails官方建議使用render collection %>
+          <%# <%= render "comments/comment" , comment: comment %> 
+        <%# <% end %>
+      <%# </ul> %>
+
       <ul>
-        <% @comments.each do |comment|%>
-
-            <li>
-            <%= comment.content %>
-            <%= link_to "刪除" , comment_path(comment.id),method:"delete" %>
-            </li>
-
-        <% end %>
+        <%# 所以變成這樣 %>
+        <%= render partial: "comments/comment" , collection: @comments , as: :comment %>
+        <%# 再符合慣例的話，可以變成 %>
+        <%# <%= render @comments %> %>
       </ul>
       
-   <% end %>
+   
     
 </body>
 </html>

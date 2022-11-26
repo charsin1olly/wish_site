@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+  # rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   # include UserHelper
   helper_method :current_user , :user_sign_in?
   #寫在controller給helper還可以用這個方法
@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
   def current_user
     #memorization 記憶手法，出現過的東西在這個頁面留下實體變數
-  @login_username ||=User.find_by(id: session[:user])
+    @login_username ||=User.find_by(id: session[:user])
   end
 
   def user_sign_in?

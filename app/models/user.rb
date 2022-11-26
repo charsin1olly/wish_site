@@ -9,6 +9,8 @@ class User < ApplicationRecord
 
   #relationship
   has_many :wish_lists
+  has_many :comments
+  # has_many :order
 
 
   # callbacks
