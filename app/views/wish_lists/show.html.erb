@@ -12,12 +12,14 @@
    
     <section>
       <%= @wish_list.title %>
-     </section>
-   <section>
-    <%= simple_format(@wish_list.description) %>
-   </section>
+    </section>
+
+    <section>
+      <%= simple_format(@wish_list.description) %>
+    </section>
    
-    <%= form_with(model: @comment, url: wish_list_comments_path(@wish_list)) do |f| %>
+   <%# 用AJAX方式送資料(rails 6之後) local: false %>
+    <%= form_with(model: @comment, url: wish_list_comments_path(@wish_list) ,local: false) do |f| %>
 
       <div>
         <div>留言</div>
@@ -27,19 +29,19 @@
       <%= f.submit "留言" %>
     <% end %>
      
-      <%# <ul> %>
-        <%# <% @comments.each do |comment| %> 
-          <%# 不建議在回圈裡寫render，rails官方建議使用render collection %>
-          <%# <%= render "comments/comment" , comment: comment %> 
-        <%# <% end %>
-      <%# </ul> %>
+    <%# <ul class="comments"> %>
+      <%# <% @comments.each do |comment| %> 
+        <%# <%= render "comments/comment" , comment: comment%> 
+        <%# 不建議在回圈裡寫render，rails官方建議使用render collection %>
+      <%# <% end %> 
+    <%# </ul> %>
 
-      <ul>
-        <%# 所以變成這樣 %>
-        <%= render partial: "comments/comment" , collection: @comments , as: :comment %>
-        <%# 再符合慣例的話，可以變成 %>
-        <%# <%= render @comments %> %>
-      </ul>
+    <ul class="comments">
+      <%# 所以變成這樣(為了節省記憶體) %>
+      <%# <%= render partial: "comments/comment" , collection: @comments , as: :comment %> 
+      <%# 再符合慣例的話，可以變成 %>
+      <%= render @comments %>
+    </ul>
       
    
     
