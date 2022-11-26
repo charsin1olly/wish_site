@@ -1,6 +1,10 @@
 var comments = document.querySelector(".comments")
 
-var li= `<%= render "comments/comment" , comment: @comment %>`
+<%# var li= `<%= render "comments/comment" , comment: @comment %>
+<%# 也可以改成這樣 %>
+<%# var li= `<%= render @comment %>
+<%# 使用跳脫符號j配單雙括號 %>
+var li= "<%= j render @comment %>"
 
 
 comments.insertAdjacentHTML("afterbegin",li)

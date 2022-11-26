@@ -15,8 +15,9 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment.update(deleted_at: Time.current)
-    redirect_to wish_list_path(@comment.wish_list) ,notice:"刪除成功"
+    @comment.destroy
+    # @comment.update(deleted_at: Time.current)
+    # redirect_to wish_list_path(@comment.wish_list) ,notice:"刪除成功"
   end
 
   private

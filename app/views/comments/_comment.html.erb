@@ -1,4 +1,6 @@
- <li>
+ 
+
+<li id="<%= dom_id(comment) %>">
   <%= comment.content %>
-  <%= link_to "刪除", comment_path(comment),method:"delete" ,data:{confirm:"確定嗎？"} %>
-  </li>
+  <%= link_to "刪除", comment_path(comment),method:"delete" ,data:{confirm:"確定嗎？" ,remote: true} %>
+</li>
