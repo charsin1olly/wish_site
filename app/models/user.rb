@@ -10,6 +10,9 @@ class User < ApplicationRecord
   #relationship
   has_many :wish_lists
   has_many :comments
+  
+  has_many :like_wish_lists
+  has_many :liked_wish_lists, through: :like_wish_lists ,source: :wish_list
   # has_many :order
 
 

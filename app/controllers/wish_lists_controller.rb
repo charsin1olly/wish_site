@@ -1,6 +1,6 @@
 class WishListsController < ApplicationController
 before_action :authenticate_user! 
-before_action :find_wish_list, only:[:show ,:edit ,:update ,:destroy]
+before_action :find_wish_list, only:[:show ,:edit ,:update ,:destroy,:like]
 
   
   def index
@@ -51,6 +51,19 @@ before_action :find_wish_list, only:[:show ,:edit ,:update ,:destroy]
 
     redirect_to root_path ,notice:"刪除成功"
   end
+
+  def like
+    if @wish_list.liked_by?(current_user)
+      # 移除 like
+      current_user.liked_wish_lists.delete(@wish_list)
+      render json: { status: 'unliked' }
+    else
+      # 新增 like
+      current_user.liked_wish_lists << @wish_list
+      render json: { status: 'liked' }
+    end
+  end
+
 
 private
   def find_wish_list
