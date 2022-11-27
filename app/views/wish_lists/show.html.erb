@@ -12,14 +12,19 @@
    
     <section>
       <%= @wish_list.title %>
+      <button id="like_btn" 
+              data-controller="favorite-btn"
+              data-action="click->favorite-btn#toggle"
+              data-favorite-btn-target="icon">NO</button>
     </section>
 
     <section>
       <%= simple_format(@wish_list.description) %>
     </section>
    
-   <%# 用AJAX方式送資料(rails 6之後) local: false %>
-    <%= form_with(model: @comment, url: wish_list_comments_path(@wish_list) ,local: false) do |f| %>
+   <%# 用AJAX方式送資料(rails 6之後) local: false ；或是給他data:{remote: true} %>
+   <%# 為了節省網數效能，適用於一次要載入很多資料的更新（反正我前端有出來給你看了，後端要跑但是不用重抓） %>
+    <%= form_with(model: @comment, url: wish_list_comments_path(@wish_list) ,data:{remote: true}) do |f| %>
 
       <div>
         <div>留言</div>
@@ -47,3 +52,12 @@
     
 </body>
 </html>
+
+<%# <script>
+  const like_btn = document.querySelector("#like_btn")
+  like_btn.addEventListener("click",(e)=>{
+    e.preventDefault
+    console.log("123")
+    like_btn.textcontent="yes"
+  })
+</script> %>

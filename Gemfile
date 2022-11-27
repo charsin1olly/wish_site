@@ -58,3 +58,4 @@ gem 'net-smtp', require: false
 gem 'net-imap', require: false
 gem 'net-pop', require: false
 gem "paranoia", "~> 2.6"
+gem 'foreman', '~> 0.87.2'
