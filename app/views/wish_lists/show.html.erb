@@ -14,8 +14,10 @@
       <%= @wish_list.title %>
       <button id="like_btn" 
               data-controller="favorite-btn"
-              data-action="click->favorite-btn#toggle"
-              data-favorite-btn-target="icon">NO</button>
+              data-action="click->favorite-btn#toggle">
+              <span data-favorite-btn-target="text">like</span>
+              <i class="fa-regular fa-heart" data-favorite-btn-target="icon"></i>
+              </button>
     </section>
 
     <section>

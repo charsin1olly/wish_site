@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   get "/contact", to: "pages#contact"
 
   resources :wish_lists do
+    member do
+      patch :like
+    end
     #新增時需要wishlist的ID
     #寄生在wish_list 不用index 不用show/不要編輯功能  shallow: true打開就有這種功能
     resources :comments , shallow: true ,only: [:create , :destroy]
